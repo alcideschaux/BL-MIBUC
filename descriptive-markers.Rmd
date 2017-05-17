@@ -1,0 +1,318 @@
+---
+title: "Markers Features"
+---
+
+```{r global, warning = FALSE, message = FALSE, echo = FALSE}
+source("global.R")
+DF <- DF_MARKERS
+```
+
+In this section, we describe the expression features of the analyzed markers, including extent (i.e., percentage) of "positive" cells, expression patterns, and expression intensity, as observed in the TMA spots. Thus, the values reported here correspond to the overall features of the markers across all TMA spots. The dataset included `r nrow(DF)` TMA spots.
+
+***
+
+## **CK5/6 expression**
+### Percentage of positive cells
+```{r ck56_extent}
+x <- DF$ck56_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern
+```{r ck56_pattern}
+x <- DF$ck56_pattern
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r ck56_intensity}
+x <- DF$ck56_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **CK20 expression**
+### Percentage of positive cells
+```{r ck20_extent}
+x <- DF$ck20_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern
+```{r ck20_pattern}
+x <- DF$ck20_pattern
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r ck20_intensity}
+x <- DF$ck20_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **CD44 expression**
+### Percentage of positive cells
+```{r cd44_extent}
+x <- DF$cd44_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern (#1)
+```{r cd44_pattern_1}
+x <- DF$cd44_pattern_1
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression pattern (#2)
+```{r cd44_pattern_2}
+x <- DF$cd44_pattern_2
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r cd44_intensity}
+x <- DF$cd44_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **p53 expression**
+### Percentage of positive cells
+```{r p53_extent}
+x <- DF$p53_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern (#1)
+```{r p53_pattern_1}
+x <- DF$p53_pattern_1
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression pattern (#2)
+```{r p53_pattern_2}
+x <- DF$p53_pattern_2
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r p53_intensity}
+x <- DF$p53_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **GATA3 expression**
+### Percentage of positive cells
+```{r gata3_extent}
+x <- DF$gata3_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern (#1)
+```{r gata3_pattern_1}
+x <- DF$gata3_pattern_1
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression pattern (#2)
+```{r gata3_pattern_2}
+x <- DF$gata3_pattern_2
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r gata3_intensity}
+x <- DF$gata3_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **ER expression**
+### Percentage of positive cells
+```{r er_extent}
+x <- DF$er_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern (#1)
+```{r er_pattern_1}
+x <- DF$er_pattern_1
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression pattern (#2)
+```{r er_pattern_2}
+x <- DF$er_pattern_2
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r er_intensity}
+x <- DF$er_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Ki67 expression**
+### Percentage of positive cells
+```{r ki67_extent}
+x <- DF$ki67_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+## **HER2 expression**
+### Percentage of positive cells
+```{r her2_extent}
+x <- DF$her2_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern
+```{r her2_pattern}
+x <- DF$her2_pattern
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r her2_intensity}
+x <- DF$her2_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression using the breast system
+```{r her2_brst}
+x <- DF$her2_brst
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression using the stomach system
+```{r her2_stmch}
+x <- DF$her2_stmch
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Uroplakin expression**
+### Percentage of positive cells
+```{r uroplakin_extent}
+x <- DF$uroplakin_extent
+tbl_nice(x)
+g_histogram(x, bin = 10)
+g_density(x)
+```
+
+***
+
+### Expression pattern (#1)
+```{r uroplakin_pattern_1}
+x <- DF$uroplakin_pattern_1
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression pattern (#2)
+```{r uroplakin_pattern_2}
+x <- DF$uroplakin_pattern_2
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Expression intensity
+```{r uroplakin_intensity}
+x <- DF$uroplakin_intensity
+tbl_nice(x)
+g_barplot(x)
+```
+
+***

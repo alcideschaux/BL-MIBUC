@@ -1,0 +1,36 @@
+name: "BL-MIBUC"
+output_dir: "."
+
+output:
+    html_document:
+        theme: cerulean
+        toc: yes
+        toc_float: true
+
+navbar:
+    title: "BL in MIBUC"
+    left:
+      - icon: fa-home
+        href: index.html
+      - text: "Descriptive analysis"
+        menu:
+          - text: "Cohort features"
+            href: descriptive-cohort.html
+          - text: "Markers features"
+            href: descriptive-markers.html
+      - text: "Association analysis"
+        menu:
+          - text: "By clinical features"
+            href: association-clinical.html
+          - text: "By pathologic diagnosis"
+            href: association-histology.html
+          - text: "By pathologic features"
+            href: association-pathology.html
+          - text: "By outcome features"
+            href: association-outcome.html
+      - text: "Outcome analysis"
+        menu:
+          - text: "Regression models"
+            href: outcome-regression.html
+          - text: "Survival curves"
+            href: outcome-survival.html

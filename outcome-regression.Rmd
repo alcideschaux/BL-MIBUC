@@ -1,0 +1,75 @@
+---
+title: "Odds ratios and hazard ratios"
+---
+
+```{r global, message=FALSE, warning=FALSE, echo=FALSE}
+source("global.R")
+
+# Filtering out rows with normal urotheliu or carcinoma in situ
+DF <- DF_REGRESSION %>% 
+    filter(
+        dx_final != "Normal urothelium",
+        dx_final != "Carcinoma in situ"
+    )
+
+# Removing the row for case S07-42476 corresponding to HG
+# Removal was done due to the fact that the case had 2 rows, one with UC and the other with HG, and only UC was required for analysis
+DF <- DF[-73 , ]
+```
+
+In this section, we estimate odds ratios and hazard ratios for distant metastasis, tumor progression, overall mortality and cancer-related mortality using markers expression. First, we grouped all TMA spots by SP number and pathologic diagnosis. We then summarized the markers expression using the median value across all TMA spots for that case and diagnosis. Next, we included the highest grade/stage lession for each case (v.g., if a case had normal urothelium, low-grade noninvasive papillary urothelial carcinoma, and invasive urothelial carcinoma, we only kept the instances corresponding to the urothelial carcinoma). Thus, each row in the dataset corresponded to the median value of the markers expression measured in the highest grade/stage lession. Finally, we categorized each row as low vs. high expression using the median as the cutoff point.
+
+Odds ratios (OR) were estimated using unconditional binary logistic regression. Hazard ratios (HR) were estimated using Cox's proportional hazards regression. We also estimated 95% confidence intervals (95% CI) and P values.
+
+```{r regression}
+FU <- DF$fu_months
+
+predictors <- with(DF, list(
+    "High CK5/6 expression" = ck56_group,
+    "High CK20 expression" = ck20_group,
+    "High CD44 expression" = cd44_group,
+    "High p53 expression" = p53_group,
+    "High GATA3 expression" = gata3_group,
+    "High ER expression" = er_group,
+    "High Ki67 expression" = ki67_group,
+    "High HER2 expression" = her2_group,
+    "High Uroplakin expression" = uroplakin_group
+))
+
+varlabels <- names(predictors)
+```
+
+
+***
+
+# **Distant metastasis**
+```{r logcox_metastasis}
+outcome <- DF$metastasis
+tbl_logcox(outcome, FU, predictors, varlabels)
+```
+
+***
+
+# **Tumor progression**
+```{r logcox_progression}
+outcome <- DF$progression
+tbl_logcox(outcome, FU, predictors, varlabels)
+```
+
+***
+
+# **Overall mortality**
+```{r logcox_dead}
+outcome <- DF$dead
+tbl_logcox(outcome, FU, predictors, varlabels)
+```
+
+***
+
+# **Cancer-related mortality**
+```{r logcox_dod}
+outcome <- DF$dod
+tbl_logcox(outcome, FU, predictors, varlabels)
+```
+
+***

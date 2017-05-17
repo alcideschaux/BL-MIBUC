@@ -1,0 +1,336 @@
+---
+title: "Survival curves"
+---
+
+```{r global, message=FALSE, warning=FALSE, echo=FALSE}
+source("global.R")
+
+# Filtering out rows with normal urotheliu or carcinoma in situ
+DF <- DF_REGRESSION %>% 
+    filter(
+        dx_final != "Normal urothelium",
+        dx_final != "Carcinoma in situ"
+    )
+
+# Removing the row for case S07-42476 corresponding to HG
+# Removal was done due to the fact that the case had 2 rows, one with UC and the other with HG, and only UC was required for analysis
+DF <- DF[-73 , ]
+```
+
+In this section, we plot survival curves for distant metastasis, tumor progression, overall mortality and cancer-related mortality using markers expression. First, we grouped all TMA spots by SP number and pathologic diagnosis. We then summarized the markers expression using the median value across all TMA spots for that case and diagnosis. Next, we included the highest grade/stage lession for each case (v.g., if a case had normal urothelium, low-grade noninvasive papillary urothelial carcinoma, and invasive urothelial carcinoma, we only kept the instances corresponding to the urothelial carcinoma). Thus, each row in the dataset corresponded to the median value of the markers expression measured in the highest grade/stage lession. Finally, we categorized each row as low vs. high expression using the median as the cutoff point.
+
+Survival curves were plotted using the Kaplan-Meier method and they were compared using the log-rank (Mantel-Cox) test.
+
+
+```{r fu_months}
+FU <- DF$fu_months
+```
+
+
+***
+
+# **CK5/6 expression**
+## Distant metastasis
+```{r metastasis.ck56_group}
+status <- DF$ck56_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.ck56_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.ck56_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ck56_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **CK20 expression**
+## Distant metastasis
+```{r metastasis.ck20_group}
+status <- DF$ck20_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.ck20_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.ck20_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ck20_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **CD44 expression**
+## Distant metastasis
+```{r metastasis.cd44_group}
+status <- DF$cd44_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.cd44_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.cd44_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.cd44_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **p53 expression**
+## Distant metastasis
+```{r metastasis.p53_group}
+status <- DF$p53_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.p53_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.p53_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.p53_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **GATA3 expression**
+## Distant metastasis
+```{r metastasis.gata3_group}
+status <- DF$gata3_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.gata3_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.gata3_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.gata3_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **ER expression**
+## Distant metastasis
+```{r metastasis.er_group}
+status <- DF$er_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.er_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.er_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.er_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **Ki67 expression**
+## Distant metastasis
+```{r metastasis.ki67_group}
+status <- DF$ki67_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.ki67_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.ki67_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ki67_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **HER2 expression**
+## Distant metastasis
+```{r metastasis.her2_group}
+status <- DF$her2_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.her2_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.her2_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.her2_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+# **Uroplakin expression**
+## Distant metastasis
+```{r metastasis.uroplakin_group}
+status <- DF$uroplakin_group
+outcome <- DF$metastasis
+g_surv(FU, outcome, status, ymin = 0.5, x_breaks = 10)
+```
+
+***
+
+## Tumor progression
+```{r progression.uroplakin_group}
+outcome <- DF$progression
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***
+
+## Overall mortality
+```{r dead.uroplakin_group}
+outcome <- DF$dead
+g_surv(FU, outcome, status, x_breaks = 10)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.uroplakin_group}
+outcome <- DF$dod
+g_surv(FU, outcome, status, ymin = 0.3, x_breaks = 10)
+```
+
+***

@@ -1,0 +1,438 @@
+---
+title: "Markers expression and outcome features"
+---
+
+```{r global, message=FALSE, warning=FALSE, echo=FALSE}
+source("global.R")
+
+# Filtering out rows with normal urotheliu or carcinoma in situ
+DF <- DF_ASSOCIATION %>% 
+    filter(
+        dx_final != "Normal urothelium",
+        dx_final != "Carcinoma in situ"
+    )
+
+# Removing the row for case S07-42476 corresponding to HG
+# Removal was done due to the fact that the case had 2 rows, one with UC and the other with HG, and only UC was required for analysis
+DF <- DF[-73 , ]
+```
+
+In this section, we analyze the association between markers extent (i.e., percentage of "positive" cells) and outcome features. First, we grouped all TMA spots by SP number and pathologic diagnosis. We then summarized the markers expression using the median value across all TMA spots for that case and diagnosis. We finally included the highest grade/stage lession for each case (v.g., if a case had normal urothelium, low-grade noninvasive papillary urothelial carcinoma, and invasive urothelial carcinoma, we only kept the instances corresponding to the urothelial carcinoma). Thus, each row in the dataset corresponded to the median value of the markers expression measured in the highest grade/stage lession.
+
+We compared the (summarized) markers expression by outcome features using boxplots and density plots. For statistical testing, we used the Mann-Whitney U test or the Kruskal-Wallis rank sum test, depending on the number of levels of the grouping variable.
+
+***
+
+# **CK5/6 expression**
+## Distant metastasis
+```{r metastasis.ck56_median}
+x <- DF$ck56_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.ck56_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.ck56_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ck56_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **CK20 expression**
+## Distant metastasis
+```{r metastasis.ck20_median}
+x <- DF$ck20_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.ck20_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.ck20_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ck20_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **CD44 expression**
+## Distant metastasis
+```{r metastasis.cd44_median}
+x <- DF$cd44_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.cd44_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.cd44_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.cd44_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **p53 expression**
+## Distant metastasis
+```{r metastasis.p53_median}
+x <- DF$p53_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.p53_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.p53_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.p53_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **GATA3 expression**
+## Distant metastasis
+```{r metastasis.gata3_median}
+x <- DF$gata3_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.gata3_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.gata3_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.gata3_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **ER expression**
+## Distant metastasis
+```{r metastasis.er_median}
+x <- DF$er_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.er_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.er_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.er_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **Ki67 expression**
+## Distant metastasis
+```{r metastasis.ki67_median}
+x <- DF$ki67_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.ki67_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.ki67_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.ki67_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **HER2 expression**
+## Distant metastasis
+```{r metastasis.her2_median}
+x <- DF$her2_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.her2_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.her2_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.her2_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+# **Uroplakin expression**
+## Distant metastasis
+```{r metastasis.uroplakin_median}
+x <- DF$uroplakin_median
+y <- DF$metastasis
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Tumor progression
+```{r progression.uroplakin_median}
+y <- DF$progression
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Overall mortality
+```{r dead.uroplakin_median}
+y <- DF$dead
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## Cancer-related mortality
+```{r dod.uroplakin_median}
+y <- DF$dod
+tbl_nice(x, y)
+tbl_mw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***

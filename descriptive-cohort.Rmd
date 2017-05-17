@@ -1,0 +1,270 @@
+---
+title: "Cohort features"
+---
+
+```{r global, echo = FALSE, message = FALSE, warning = FALSE}
+source("global.R")
+```
+
+In this section, we describe the clinical, preoperative, pathologic, treatment, and outcome features of the patients' cohort. Features were described using measures of central tendency and dispersion, histograms, density plots, and barplots. The dataset was composed of `r nrow(DF_FU)` patients.
+
+***
+
+## **Clinical features**
+### Age, in years
+```{r age}
+x <- DF_FU$age
+tbl_nice(x)
+g_histogram(x, max_break = 90)
+g_density(x)
+```
+
+***
+
+### Sex
+```{r sex}
+x <- DF_FU$gender
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Race
+```{r race}
+x <- DF_FU$race
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### History of prostate cancer
+```{r prostate_cancer}
+x <- DF_FU$prostate_cancer
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Preoperative features**
+### Preoperative procedure
+```{r preop_procedure}
+x <- DF_FU$preop_procedure
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Preoperative carcinoma *in situ*
+```{r preop_cis}
+x <- DF_FU$preop_cis
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Preoperative cT
+```{r preop_stage}
+x <- DF_FU$preop_stage
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Preoperative stage
+```{r stage_clinical}
+x <- DF_FU$stage_clinical
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Pathologic features**
+### pT
+```{r pt}
+x <- DF_FU$pt
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Pathologic stage
+```{r stage_pt}
+x <- DF_FU$stage_pt
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Histologic grade
+```{r grade}
+x <- DF_FU$grade
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Presence of carcinoma *in situ*
+```{r cis}
+x <- DF_FU$cis
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Presence of lymphovascular invasion
+```{r lvi}
+x <- DF_FU$lvi
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Presence of lymph nodes metastasis
+```{r lymphnodes_metastasis}
+x <- DF_FU$lymphnodes_metastasis
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Treatment features**
+### Preoperative radiotherapy
+```{r preop_radiotherapy}
+x <- DF_FU$preop_radiotherapy
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Preoperative chemotherapy
+```{r preop_chemotherapy}
+x <- DF_FU$preop_chemotherapy
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Intravesical chemotherapy
+```{r intravesical_chemotherapy}
+x <- DF_FU$intravesical_chemotherapy
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Type of intravesical chemotherapy
+```{r intravesical_chemotherapy_type}
+x <- DF_FU$intravesical_chemotherapy_type
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Postoperative radiotherapy
+```{r postop_radiotherapy}
+x <- DF_FU$postop_radiotherapy
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Postoperative chemotherapy
+```{r postop_chemotherapy}
+x <- DF_FU$postop_chemotherapy
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Type of postoperative chemotherapy
+```{r postop_chemotherapy_type}
+x <- DF_FU$postop_chemotherapy_type
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+## **Outcome features**
+### Follow-up, in months
+```{r fu_months}
+x <- DF_FU$fu_months
+tbl_nice(x)
+g_histogram(x, bin = 24, max_break = 216)
+g_density(x)
+```
+
+***
+
+### Distant metastasis
+```{r metastasis}
+x <- DF_FU$metastasis
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Tumor progression
+```{r progression}
+x <- DF_FU$progression
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Early complications
+```{r complications_early}
+x <- DF_FU$complications_early
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Late complications
+```{r complications_late}
+x <- DF_FU$complications_late
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Overall mortality
+```{r dead}
+x <- DF_FU$dead
+tbl_nice(x)
+g_barplot(x)
+```
+
+***
+
+### Cancer-related mortality
+```{r dod}
+x <- DF_FU$dod
+tbl_nice(x)
+g_barplot(x)
+```
+
+***

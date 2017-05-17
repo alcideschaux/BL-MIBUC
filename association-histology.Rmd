@@ -1,0 +1,122 @@
+---
+title: "Markers expression by diagnosis"
+---
+
+```{r global, warning = FALSE, message = FALSE, echo = FALSE}
+source("global.R")
+
+# Curating the dataset
+DF <- DF_ASSOCIATION
+
+# Defining the grouping variable
+y <- DF$dx_final
+```
+
+In this section, we analize the markers expression by pathologic diagnosis. For the analysis, we first grouped all the values from each TMA considering SP number and pathologic diagnosis. We then summarized each instance using the median value of the marker extent (i.e., percentage of "positive" cells) accross the TMAs corresponding to this particular instance. We used the median value instead of the mean value due to the marked right skewness we observed in the distribution of the markers extent. Finally, we compared the (summarized) markers expression by pathologic diagnosis using boxplots and density plots. For statistical testing, we used the Kruskal-Wallis rank sum test.
+
+- NU = Normal urothelium
+- CIS = Carcinoma *in situ*
+- LG = Low-grade noninvasive papillary urothelial carcinoma
+- HG = High-grade noninvasive papillary urothelial carcinoma
+- UC = Urothelial carcinoma
+
+***
+
+## **CK5/6 expression**
+```{r histology_ck56}
+x <- DF$ck56_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **CK20 expression**
+```{r histology_ck20}
+x <- DF$ck20_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **CD44 expression**
+```{r histology_cd44}
+x <- DF$cd44_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **p53 expression**
+```{r histology_p53}
+x <- DF$p53_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **GATA3 expression**
+```{r histology_gata3}
+x <- DF$gata3_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **ER expression**
+```{r histology_er}
+x <- DF$er_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **Ki67 expression**
+```{r histology_ki67}
+x <- DF$ki67_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **HER2 expression**
+```{r histology_her2}
+x <- DF$her2_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***
+
+## **Uroplakin expression**
+```{r histology_uroplakin}
+x <- DF$uroplakin_median
+tbl_nice(x, y)
+tbl_kw(x, y)
+g2_boxplot(x, y)
+g2_density(x, y)
+```
+
+***

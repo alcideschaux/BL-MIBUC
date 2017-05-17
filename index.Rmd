@@ -1,0 +1,53 @@
+---
+title: "BL markers in MIBUC"
+---
+
+**Title:** Basal and Luminal Markers in Muscule Invasive Bladder Urothelial Carcinoma
+
+**Authors:** Aline Tregnago^1^; María del Carmen Rodríguez-Peña^1^; Marie-Lisa Eich^1^; Alcides Chaux^2^; George J. Netto^3^
+
+**Affiliations:** ^1^Department of Pathology, The Johns Hopkins Medical Institutions, Baltimore, MD; ^2^Centro para el Desarrollo de la Investigación Científica (CEDIC), Asunción, Paraguay; ^3^Department of Pathology, The University of Alabama at Birmingham, Birmingham, AL
+
+**Last update:** `r Sys.Date()`
+
+***
+
+## Methology
+The following markers were evaluated
+
+- **Basal markers:** CK5/6, CD44
+- **Luminal markers:** CK20, GATA3, ER, HER2, Uroplakin
+
+For each marker, the following features were evaluated:
+
+- **Extent:** A numeric variable recording the percentage of "positive" cells
+- **Pattern:** A factor variable, with either luminal/umbrella/basal/diffuse, membranous/cytoplasmic, or nuclear/cytoplasmic levels, depending on the marker
+- **Intensity:** A factor variable, with weak/moderate/strong levels
+
+HER2 expression was also categorized using the breast and stomach [scoring systems](http://www.captodayonline.com/second-act-for-her2-in-gastric-cancers/).
+
+***
+
+## Data analysis
+Data analysis was carried out using 3 approaches: descriptive analysis, association analysis, and outcome analysis. Data was analyzed and plots were generated using `r R.version.string` from the R Foundation for Statistical Computing (Vienna, Austria). R packages from the [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) were extensively used.
+
+\ 
+
+### Descriptive analysis
+Categorical variables were described using frequency tables and barplots. Numerical variables were described using measurements of central tendency and dispersion, histograms, and density plots.
+
+\ 
+
+### Association analysis
+Marker values were compared considering clinical, preoperative, pathologic, treatment, and outcome features. In this context, marker values were considered as the outcome variables and the aforementioned features as the predictor variables. Variables were described using measurements of central tendency and dispersion, boxplots, and density plots.
+
+The association was evaluated using either the [Mann-Whitney U test for the sum of ranks](https://en.wikipedia.org/wiki/Mann-Whitney_U_test) or the [Kruskal-Wallis rank sum test](https://en.wikipedia.org/wiki/Kruskal-Wallis_one-way_analysis_of_variance), depending on the features of the predictor variables.
+
+\ 
+
+### Outcome analysis
+The outcome analysis included regression modeling and time-to-event (survival) analysis. Markers levels were categorized as high/kow expression using the median as the cutoff point. Outcome variables included distant metastasis, tumor progression, overall mortality, and cancer-related mortality.
+
+Odds ratios were estimated using unconditional binary [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression). Hazard ratios were estimated using [Cox's proportional hazards regression](https://en.wikipedia.org/wiki/Proportional_hazards_model). Survival curves were built using the [Kapplan-Meier estimator](https://en.wikipedia.org/wiki/Kaplan-Meier_estimator) and compared using the [log-rank test](https://en.wikipedia.org/wiki/Log-rank_test).
+
+***
